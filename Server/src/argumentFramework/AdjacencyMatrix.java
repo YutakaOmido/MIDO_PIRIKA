@@ -35,7 +35,10 @@ public class AdjacencyMatrix {
 	}
 
 	public void removeRowAt(int index){
-
+		if(index < this.rowSize){
+			this.matrix.remove(index);
+			this.rowSize--;
+		}
 	}
 
 	public void addColumnAt(int index){
@@ -49,7 +52,12 @@ public class AdjacencyMatrix {
 	}
 
 	public void removeColumnAt(int index){
-
+		if(index < this.columnSize){
+			for(int i=0; i<this.rowSize; i++){
+				this.matrix.get(i).remove(index);
+			}
+			columnSize--;
+		}
 	}
 
 	public String toString(){
@@ -69,7 +77,7 @@ public class AdjacencyMatrix {
 	}
 
 	public static void main(String[] args){
-		AdjacencyMatrix matrix = new AdjacencyMatrix(2, 3);
+		AdjacencyMatrix matrix = new AdjacencyMatrix(3, 3);
 		matrix.setValue(0, 0, true);
 		matrix.setValue(1, 2, true);
 		System.out.println("print matrix");
@@ -83,6 +91,12 @@ public class AdjacencyMatrix {
 		matrix.setValue(2, 4, false);
 		matrix.addColumnAt(3);
 		matrix.addRowAt(3);
+		matrix.setValue(2, 2, true);
+		System.out.println("print matrix");
+		System.out.println(matrix.toString());
+		matrix.removeRowAt(1);
+		matrix.removeColumnAt(2);
+		matrix.setValue(2, 1, true);
 		System.out.println("print matrix");
 		System.out.println(matrix.toString());
 	}
