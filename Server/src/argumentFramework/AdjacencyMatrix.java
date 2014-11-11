@@ -20,6 +20,8 @@ public class AdjacencyMatrix {
 		for(int i=0; i<columnSize; i++){ addColumnAt(this.columnSize); }
 	}
 
+	public int getRowSize(){ return this.rowSize; }
+	public int getColumnSize(){ return this.columnSize; }
 	public Boolean getValue(int row, int column) { return this.matrix.get(row).get(column); }
 	public void setValue(int row, int column, boolean value) { this.matrix.get(row).set(column, value); }
 
